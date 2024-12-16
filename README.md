@@ -7,5 +7,5 @@
 - [] npm i node-fetch
 - [] npm i react-spinners
 - [] npm i swiper
-- [] font-awesome
+- [x] font-awesome
 - [] helmet-async

@@ -2,7 +2,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Color from "./pages/color/Color";
 import Title from "./pages/title/Title";
-import Upload from "./pages/uoload/Upload";
+import Upload from "./pages/upload/Upload";
 
 const Router = () => {
   return (
