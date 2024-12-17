@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -35,6 +36,9 @@ const StartBtn = styled.div`
 const Home = () => {
   return (
     <Container>
+      <Helmet>
+        <title>스토리컷_홈</title>
+      </Helmet>
       {/* <h1>스토리컷</h1> */}
       <Link to="/color">
         <StartBtn>시작하기</StartBtn>

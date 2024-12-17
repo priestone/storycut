@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   max-width: 440px;
@@ -93,6 +94,9 @@ const Title = () => {
   };
   return (
     <Container>
+      <Helmet>
+        <title>스토리컷_제목</title>
+      </Helmet>
       <BackButton onClick={handleBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </BackButton>

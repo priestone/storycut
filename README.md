@@ -1,8 +1,16 @@
-# 설치항목
+# 사이트 명
 
-- [x] npm i react-router-dom
-- [x] npm i styled-components
-- [x] npm i styled-reset
-- [x] npm i react-hook-form
-- [x] font-awesome
-- [] helmet-async
+- 스토리 컷
+
+## 목적
+
+- 기존의 "인생네컷"의 트랜드는 가져오지만 더 자유로운 환경에서 새로운 네컷 사진을 제공함함
+- 공간적, 시간적 제약에서 벗어난 환경을 제공하는 장점이 있음
+
+## STACK
+
+- html, css, node js, react, pigma
+
+## 지원디바이스
+
+- 모바일

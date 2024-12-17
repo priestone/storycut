@@ -2,6 +2,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import html2canvas from "html2canvas";
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import styled from "styled-components";
@@ -164,6 +165,9 @@ const Upload = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>스토리컷_업로드</title>
+      </Helmet>
       <BackButton onClick={handleBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </BackButton>

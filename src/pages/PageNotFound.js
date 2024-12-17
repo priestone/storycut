@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -35,6 +36,9 @@ const StartBtn = styled.div`
 const PageNotFound = () => {
   return (
     <Container>
+      <Helmet>
+        <title>pagenotfound</title>
+      </Helmet>
       <Link to={"/"}>
         <StartBtn>홈 버튼</StartBtn>
       </Link>

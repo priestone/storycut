@@ -2,6 +2,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { ChromePicker } from "react-color";
+import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -158,6 +159,9 @@ const Color = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>스토리컷_색상선택</title>
+      </Helmet>
       <BackButton onClick={handleBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </BackButton>
@@ -228,49 +232,3 @@ const Color = () => {
 };
 
 export default Color;
-
-{
-  /* <Container>
-<BackButton onClick={handleBack}>
-  <FontAwesomeIcon icon={faArrowLeft} />
-</BackButton>
-<h1>프레임의 색상을 선택해주세요</h1>
-<ConWrap>
-  <Con1 bgColor={bgColor}>
-    <Con></Con>
-    <Con></Con>
-    <Con></Con>
-    <Con></Con>
-  </Con1>
-  <ColorWrap>
-    <h2>Theme Color</h2>
-    <Colors>
-      <ColorBtn color="black" onClick={() => handleColorClick("black")} />
-      <ColorBtn color="gray" onClick={() => handleColorClick("gray")} />
-      <ColorBtn
-        color="lightgrey"
-        onClick={() => handleColorClick("lightgrey")}
-      />
-      <ColorBtn color="white" onClick={() => handleColorClick("white")} />
-    </Colors>
-    <h2>Custom Color</h2>
-    <div>
-      <ChromePicker
-        color={customColor}
-        onChangeComplete={handleChangeComplete}
-        styles={{
-          default: {
-            picker: {
-              width: "100%", // 원하는 width 설정
-            },
-          },
-        }}
-      />
-    </div>
-  </ColorWrap>
-</ConWrap>
-<Link to="/title">
-  <NextBtn>다음으로</NextBtn>
-</Link>
-</Container> */
-}
