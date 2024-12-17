@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/stoycut/static/js/main.d0d40a9d.js",
-    "index.html": "/stoycut/index.html",
-    "main.d0d40a9d.js.map": "/stoycut/static/js/main.d0d40a9d.js.map"
+    "main.js": "/storycut/static/js/main.4cef73e4.js",
+    "index.html": "/storycut/index.html",
+    "main.4cef73e4.js.map": "/storycut/static/js/main.4cef73e4.js.map"
   },
   "entrypoints": [
-    "static/js/main.d0d40a9d.js"
+    "static/js/main.4cef73e4.js"
   ]
 }
