@@ -3,15 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const Container = styled.div`
   max-width: 440px;
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  background-color: cornflowerblue;
+  background-color: #f8f0e5;
   position: relative;
-  padding: 100px 20px;
+  padding: 100px 20px 0 20px;
   h1 {
     text-align: center;
     font-size: 20px;
@@ -43,7 +44,9 @@ const TitleWrap = styled.div`
   margin: 50px auto;
 
   h2 {
+    font-weight: 500;
     font-size: 20px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -62,6 +65,7 @@ const NextBtn = styled.div`
   text-align: center;
   line-height: 50px;
   margin: 10px auto;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const Title = () => {
@@ -81,7 +85,10 @@ const Title = () => {
       localStorage.setItem("storyTitle", title);
       navigate("/upload");
     } else {
-      alert("제목을 입력해주세요!");
+      toast.warn("제목을 입력해주세요!", {
+        position: "bottom-center",
+        autoClose: 3000, // 3초 후 자동 닫힘
+      });
     }
   };
   return (
@@ -89,9 +96,9 @@ const Title = () => {
       <BackButton onClick={handleBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </BackButton>
-      <h1>여러분의 스토리에 제목을 적어주세요!</h1>
 
       <TitleWrap>
+        <h1>여러분의 스토리에 제목을 적어주세요!</h1>
         <h2>타이틀</h2>
         <TitleInput
           placeholder="제목을 입력해주세요"
@@ -101,6 +108,7 @@ const Title = () => {
       </TitleWrap>
 
       <NextBtn onClick={handleNext}>다음으로</NextBtn>
+      <ToastContainer />
     </Container>
   );
 };

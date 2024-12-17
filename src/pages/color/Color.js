@@ -8,9 +8,10 @@ import styled from "styled-components";
 const Container = styled.div`
   max-width: 440px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
+  background-color: #f8f0e5;
   padding: 100px 20px;
   position: relative;
 
@@ -42,8 +43,9 @@ const BackButton = styled.button`
 
 const ConWrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   /* align-items: center; */
+  margin-bottom: 20px;
 `;
 
 const Con1 = styled.div`
@@ -67,23 +69,41 @@ const NextBtn = styled.div`
   border-radius: 20px;
   text-align: center;
   line-height: 50px;
-  margin: 10px auto;
+  margin: 50px auto 0 auto;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const ColorWrap = styled.div`
-  width: 50%;
-
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
   h2 {
     margin-bottom: 10px;
   }
 `;
 
+const CustomBtn = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 227, 68, 1) 0%,
+    rgba(255, 143, 143, 1) 100%
+  );
+`;
+
 const Colors = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-rows: repeat(2, 60px);
   grid-template-columns: repeat(2, 60px);
   gap: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 50px; */
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 `;
 
 const ColorBtn = styled.div`
@@ -93,9 +113,32 @@ const ColorBtn = styled.div`
   background-color: ${(props) => props.color};
 `;
 
+const Popup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+`;
+
 const Color = () => {
   const [bgColor, setBgColor] = useState("black"); // Con1 배경색 상태
   const [customColor, setCustomColor] = useState("#ffffff"); // ChromePicker 색상 상태
+  const [showPicker, setShowPicker] = useState(false); // ChromePicker 표시 상태
   const navigate = useNavigate();
 
   const handleColorClick = (color) => {
@@ -126,33 +169,57 @@ const Color = () => {
           <Con></Con>
           <Con></Con>
         </Con1>
-        <ColorWrap>
-          <h2>Theme Color</h2>
-          <Colors>
-            <ColorBtn color="black" onClick={() => handleColorClick("black")} />
-            <ColorBtn color="gray" onClick={() => handleColorClick("gray")} />
-            <ColorBtn
-              color="lightgrey"
-              onClick={() => handleColorClick("lightgrey")}
-            />
-            <ColorBtn color="white" onClick={() => handleColorClick("white")} />
-          </Colors>
-          <h2>Custom Color</h2>
-          <div>
-            <ChromePicker
-              color={customColor}
-              onChangeComplete={handleChangeComplete}
-              styles={{
-                default: {
-                  picker: {
-                    width: "100%", // 원하는 width 설정
-                  },
-                },
-              }}
-            />
-          </div>
-        </ColorWrap>
       </ConWrap>
+      <h2>Theme Color</h2>
+      <ColorWrap>
+        <Colors>
+          <ColorBtn color="black" onClick={() => handleColorClick("black")} />
+          <ColorBtn
+            color="#EF8A9C"
+            onClick={() => handleColorClick("#EF8A9C")}
+          />
+          <ColorBtn
+            color="#6C89AB"
+            onClick={() => handleColorClick("#6C89AB")}
+          />
+          <ColorBtn
+            color="#897E78"
+            onClick={() => handleColorClick("#897E78")}
+          />
+          <CustomBtn onClick={() => setShowPicker(true)} />
+        </Colors>
+        {showPicker && (
+          <>
+            <Overlay onClick={() => setShowPicker(false)} />
+            <Popup>
+              <ChromePicker
+                color={customColor}
+                onChangeComplete={handleChangeComplete}
+                styles={{
+                  default: {
+                    picker: {
+                      width: "300px",
+                    },
+                  },
+                }}
+              />
+            </Popup>
+          </>
+        )}
+        {/* <div>
+          <ChromePicker
+            color={customColor}
+            onChangeComplete={handleChangeComplete}
+            styles={{
+              default: {
+                picker: {
+                  width: "100%", // 원하는 width 설정
+                },
+              },
+            }}
+          />
+        </div> */}
+      </ColorWrap>
       <Link to="/title">
         <NextBtn>다음으로</NextBtn>
       </Link>
@@ -161,3 +228,49 @@ const Color = () => {
 };
 
 export default Color;
+
+{
+  /* <Container>
+<BackButton onClick={handleBack}>
+  <FontAwesomeIcon icon={faArrowLeft} />
+</BackButton>
+<h1>프레임의 색상을 선택해주세요</h1>
+<ConWrap>
+  <Con1 bgColor={bgColor}>
+    <Con></Con>
+    <Con></Con>
+    <Con></Con>
+    <Con></Con>
+  </Con1>
+  <ColorWrap>
+    <h2>Theme Color</h2>
+    <Colors>
+      <ColorBtn color="black" onClick={() => handleColorClick("black")} />
+      <ColorBtn color="gray" onClick={() => handleColorClick("gray")} />
+      <ColorBtn
+        color="lightgrey"
+        onClick={() => handleColorClick("lightgrey")}
+      />
+      <ColorBtn color="white" onClick={() => handleColorClick("white")} />
+    </Colors>
+    <h2>Custom Color</h2>
+    <div>
+      <ChromePicker
+        color={customColor}
+        onChangeComplete={handleChangeComplete}
+        styles={{
+          default: {
+            picker: {
+              width: "100%", // 원하는 width 설정
+            },
+          },
+        }}
+      />
+    </div>
+  </ColorWrap>
+</ConWrap>
+<Link to="/title">
+  <NextBtn>다음으로</NextBtn>
+</Link>
+</Container> */
+}

@@ -2,8 +2,8 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import html2canvas from "html2canvas";
 import { useState, useRef, useEffect } from "react";
-// import { SketchPicker } from "react-color";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -11,7 +11,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: cornflowerblue;
+  background-color: #f8f0e5;
   position: relative;
   padding: 100px 20px;
   h1 {
@@ -46,7 +46,6 @@ const Frame = styled.div`
   row-gap: 10px;
   width: 252px;
   height: 756px;
-  /* background-color: lightgray; */
   background-color: ${(props) =>
     props.bgColor || "lightgray"}; /* 동적 배경색 */
   padding: 10px;
@@ -60,19 +59,16 @@ const Frame = styled.div`
   img {
     width: 100%;
     object-fit: cover;
-    /* height: 140px; */
   }
 `;
 
 const TitleWrap = styled.div`
   width: 100%;
   height: 40px;
-  /* background-color: white; */
   border-radius: 4px;
   padding: 5px;
   display: flex;
   align-items: center;
-  /* color: white; */
   color: ${(props) => (props.isLight ? "black" : "white")}; /* 글자색 조건 */
 `;
 
@@ -82,17 +78,15 @@ const UploadButtonWrap = styled.div`
   justify-content: center;
 
   button {
+    width: 200px;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #fff;
+    color: black;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-
-    &:hover {
-      background-color: #0056b3;
-    }
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -146,6 +140,11 @@ const Upload = () => {
         link.download = "storycut.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
+
+        toast.success("다운로드가 완료되었습니다!", {
+          position: "bottom-center", // 알림 위치
+          autoClose: 3000, // 알림이 자동으로 사라지는 시간 (밀리초)
+        });
       });
     }
   };
@@ -168,7 +167,7 @@ const Upload = () => {
       <BackButton onClick={handleBack}>
         <FontAwesomeIcon icon={faArrowLeft} />
       </BackButton>
-      <h1>스토리컷 만들기</h1>
+      <h1>여러분의 스토리를 채워주세요!</h1>
       <Frame ref={frameRef} bgColor={bgColor}>
         {images.map((src, index) => (
           <div key={index} className="frame-item">
@@ -205,6 +204,7 @@ const Upload = () => {
       <UploadButtonWrap>
         <button onClick={handleDownload}>다운로드</button>
       </UploadButtonWrap>
+      <ToastContainer />
     </Container>
   );
 };

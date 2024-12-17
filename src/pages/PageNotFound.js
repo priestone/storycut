@@ -7,7 +7,7 @@ const Container = styled.div`
   height: 100vh;
   margin: 0 auto;
   /* background-color: cornflowerblue; */
-  background: url("/imgs/homebg.png") no-repeat center center;
+  background: url("/imgs/lostbg.png") no-repeat center center;
 
   h1 {
     position: absolute;
@@ -32,15 +32,14 @@ const StartBtn = styled.div`
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
 `;
 
-const Home = () => {
+const PageNotFound = () => {
   return (
     <Container>
-      {/* <h1>스토리컷</h1> */}
-      <Link to="/color">
-        <StartBtn>시작하기</StartBtn>
+      <Link to={"/"}>
+        <StartBtn>홈 버튼</StartBtn>
       </Link>
     </Container>
   );
 };
 
-export default Home;
+export default PageNotFound;
