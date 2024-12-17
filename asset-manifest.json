@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/storycut/static/js/main.5ab47d99.js",
+    "main.js": "/storycut/static/js/main.36e7fbd0.js",
     "index.html": "/storycut/index.html",
-    "main.5ab47d99.js.map": "/storycut/static/js/main.5ab47d99.js.map"
+    "main.36e7fbd0.js.map": "/storycut/static/js/main.36e7fbd0.js.map"
   },
   "entrypoints": [
-    "static/js/main.5ab47d99.js"
+    "static/js/main.36e7fbd0.js"
   ]
 }
