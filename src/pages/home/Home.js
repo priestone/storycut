@@ -8,7 +8,8 @@ const Container = styled.div`
   height: 100vh;
   margin: 0 auto;
   /* background-color: cornflowerblue; */
-  background: url("/imgs/homebg.png") no-repeat center center;
+  background: url("https://priestone.github.io/storycut/imgs/homebg.png")
+    no-repeat center center;
 
   h1 {
     position: absolute;

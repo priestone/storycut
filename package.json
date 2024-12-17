@@ -30,7 +30,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://priestone.github.io/stoycut/#/",
+  "homepage": "https://priestone.github.io/storycut/#/",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -48,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
