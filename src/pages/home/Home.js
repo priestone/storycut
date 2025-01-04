@@ -20,6 +20,16 @@ const Container = styled.div`
   }
 `;
 
+const Box = styled.div`
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5018382352941176) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+`;
+
 const StartBtn = styled.div`
   width: 200px;
   height: 50px;
@@ -37,13 +47,15 @@ const StartBtn = styled.div`
 const Home = () => {
   return (
     <Container>
-      <Helmet>
-        <title>스토리컷_홈</title>
-      </Helmet>
-      {/* <h1>스토리컷</h1> */}
-      <Link to="/color">
-        <StartBtn>시작하기</StartBtn>
-      </Link>
+      <Box>
+        <Helmet>
+          <title>스토리컷_홈</title>
+        </Helmet>
+        {/* <h1>스토리컷</h1> */}
+        <Link to="/color">
+          <StartBtn>시작하기</StartBtn>
+        </Link>
+      </Box>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -44,11 +44,11 @@ const TitleWrap = styled.div`
   width: 90%;
   margin: 50px auto;
 
-  h2 {
+  /* h2 {
     font-weight: 500;
     font-size: 20px;
     margin-bottom: 10px;
-  }
+  } */
 `;
 
 const TitleInput = styled.input`
@@ -98,12 +98,11 @@ const Title = () => {
         <title>스토리컷_제목</title>
       </Helmet>
       <BackButton onClick={handleBack}>
-        <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon icon={faAngleLeft} />
       </BackButton>
 
       <TitleWrap>
         <h1>여러분의 스토리에 제목을 적어주세요!</h1>
-        <h2>타이틀</h2>
         <TitleInput
           placeholder="제목을 입력해주세요"
           value={title}

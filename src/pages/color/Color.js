@@ -1,4 +1,4 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { ChromePicker } from "react-color";
@@ -32,8 +32,8 @@ const BackButton = styled.button`
   height: 50px;
   border-radius: 50%;
   background-color: white;
-  border: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: none;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
@@ -163,7 +163,7 @@ const Color = () => {
         <title>스토리컷_색상선택</title>
       </Helmet>
       <BackButton onClick={handleBack}>
-        <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon icon={faAngleLeft} />
       </BackButton>
       <h1>프레임의 색상을 선택해주세요</h1>
       <ConWrap>

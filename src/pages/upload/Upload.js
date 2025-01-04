@@ -1,4 +1,4 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import html2canvas from "html2canvas";
 import { useState, useRef, useEffect } from "react";
@@ -55,6 +55,8 @@ const Frame = styled.div`
   .frame-item {
     height: 140px;
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
   }
 
   img {
@@ -101,6 +103,7 @@ const Sample = styled.div`
   justify-content: center;
   font-size: 14px;
   color: #999;
+  font-size: 30px;
 `;
 
 const DateWrap = styled.div`
@@ -120,18 +123,27 @@ const Upload = () => {
 
   console.log(today.toLocaleDateString()); // 예: "2024. 12. 16." (한국 기준)
 
-  const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files); // 여러 파일 업로드
-    const newImages = [...images];
+  // const handleImageUpload = (e) => {
+  //   const files = Array.from(e.target.files); // 여러 파일 업로드
+  //   const newImages = [...images];
 
-    // 업로드된 파일을 순서대로 프레임에 채움
-    files.forEach((file, index) => {
-      if (index < 4) {
-        newImages[index] = URL.createObjectURL(file);
-      }
-    });
+  //   // 업로드된 파일을 순서대로 프레임에 채움
+  //   files.forEach((file, index) => {
+  //     if (index < 4) {
+  //       newImages[index] = URL.createObjectURL(file);
+  //     }
+  //   });
 
-    setImages(newImages.slice(0, 4)); // 최대 4개로 제한
+  //   setImages(newImages.slice(0, 4)); // 최대 4개로 제한
+  // };
+
+  const handleImageUpload = (e, index) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const newImages = [...images];
+      newImages[index] = URL.createObjectURL(file);
+      setImages(newImages);
+    }
   };
 
   const handleDownload = () => {
@@ -169,18 +181,30 @@ const Upload = () => {
         <title>스토리컷_업로드</title>
       </Helmet>
       <BackButton onClick={handleBack}>
-        <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon icon={faAngleLeft} />
       </BackButton>
       <h1>여러분의 스토리를 채워주세요!</h1>
       <Frame ref={frameRef} bgColor={bgColor}>
         {images.map((src, index) => (
-          <div key={index} className="frame-item">
-            {/* {src ? <img src={src} alt={`uploaded-${index}`} /> : "사진 추가"} */}
+          <div
+            key={index}
+            className="frame-item"
+            onClick={() =>
+              document.getElementById(`upload-input-${index}`).click()
+            }
+          >
             {src ? (
               <img src={src} alt={`uploaded-${index}`} />
             ) : (
-              <Sample>사진추가</Sample>
+              <Sample>+</Sample>
             )}
+            <input
+              type="file"
+              accept="image/*"
+              id={`upload-input-${index}`}
+              style={{ display: "none" }}
+              onChange={(e) => handleImageUpload(e, index)}
+            />
           </div>
         ))}
         <TitleWrap isLight={isLightBackground}>{title}</TitleWrap>
@@ -188,7 +212,7 @@ const Upload = () => {
           {today.toLocaleDateString()}
         </DateWrap>
       </Frame>
-      <UploadButtonWrap>
+      {/* <UploadButtonWrap>
         <input
           type="file"
           multiple
@@ -204,7 +228,7 @@ const Upload = () => {
             사진 업로드
           </button>
         </label>
-      </UploadButtonWrap>
+      </UploadButtonWrap> */}
       <UploadButtonWrap>
         <button onClick={handleDownload}>다운로드</button>
       </UploadButtonWrap>
